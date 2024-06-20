@@ -61,10 +61,8 @@ Enter the path to the password file: /path/to/rockyou.txt
 This will initiate the brute force attack against the specified PHP application's login page.
 
 ### Customize:
-```
 - Replace `/path/to/rockyou.txt` with the actual path where you have downloaded the `rockyou.txt` file or any other password list file.
 - Modify the GitHub repository link (`git clone ...`) to your actual repository if you're hosting it on GitHub.
-```
 
 ## Contributions
 Contributions are welcome! If you have many adjustments, create a post request.
